@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Can Change Images</h1>
+
+<img id="myImage" onclick="changeImage()" src="images/dog1.gif" width="193" height="262">
+
+<p>Click the picture to turn on/off the dog face.</p>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("images/dog2.gif")) {
+        image.src = "images/dog1.gif";
+    } else {
+        image.src = "images/dog2.gif";
+    }
+}
+</script>
+
+</body>
+</html>
