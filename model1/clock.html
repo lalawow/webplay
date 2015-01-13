@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+	var date1, date2;
+	function timerFunction1() {
+		date1 = Date();
+		document.getElementById('timer1').innerHTML = "1st timer stop at: "+date1;
+	}
+
+	function timerFunction2() {
+		date2 = Date();
+		document.getElementById('timer2').innerHTML = "2nd timer stop at: "+date2;
+	}
+    
+    function timerD() {
+    var dateD = date2 - date1;
+	console.log(date2);
+	console.log(date1);
+	console.log(dateD);
+	document.getElementById('time difference').innerHTML ="time difference is "+ dateD;
+	}
+	</script>
+</head>
+<body>
+
+<h1>闹着玩儿</h1>
+
+<button type="button1"
+onclick="timerFunction1()">
+Click me to display 1st timer.</button>
+
+<p id="timer1"></p>
+
+<button type="button1"
+onclick="timerFunction2()">
+Click me to display 2nd timer.</button>
+
+<p id="timer2"></p>
+
+<button type="button1"
+onclick="timerD()">
+Click me to display timerD.</button>
+<p id="time difference">
+	
+</p>
+
+</body>
+</html> 
