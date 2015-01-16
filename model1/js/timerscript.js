@@ -9,3 +9,14 @@ $(document).ready(function() {
     	},10000);
 
 })
+
+var timer = {
+	var minute: 0,
+	var second: 0,
+	var milsecond: 0
+}
+
+function startTimer(timeLimit) {
+
+
+}
