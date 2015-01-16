@@ -3,6 +3,8 @@
 <head>
 	<script type="text/javascript">
 	var date1, date2;
+	var startClock;
+
 	function timerFunction1() {
 		date1 = Date();
 		document.getElementById('timer1').innerHTML = "1st timer stop at: "+date1;
@@ -13,13 +15,31 @@
 		document.getElementById('timer2').innerHTML = "2nd timer stop at: "+date2;
 	}
     
-    function timerD() {
-    var dateD = date2 - date1;
-	console.log(date2);
-	console.log(date1);
-	console.log(dateD);
-	document.getElementById('time difference').innerHTML ="time difference is "+ dateD;
+    	function clock() {
+    		startClock = setInterval(function() {
+    			var currentTime = new Date();
+   			document.getElementById('clock1').innerHTML = currentTime.toTimeString().substr(0,8);
+   //			document.getElementById('clock1').innerHTML = Date().toTimeString();
+    		},1000);
+/*    		var currentTime = new Date();
+    	//	currentTime = Date();
+    	//	console.log("now + "currentTime);
+    		document.getElementById('clock1').innerHTML = displayHourAndMinute(currentTime);
+    		document.getElementById('clock2').innerHTML = currentTime.toTimeString(); */
 	}
+
+	function stopClock() {
+		clearInterval(startClock);
+	}
+
+	function displayHourAndMinute(time) {
+		console.log(time);
+		var hour = time.getHours();
+		var minute = time.getMinutes();
+		var display = hour + ":" + minute
+		console.log(display);
+		return (display);
+	}  
 	</script>
 </head>
 <body>
@@ -39,9 +59,13 @@ Click me to display 2nd timer.</button>
 <p id="timer2"></p>
 
 <button type="button1"
-onclick="timerD()">
-Click me to display timerD.</button>
-<p id="time difference">
+onclick="clock()">
+Click me to start display clock</button>
+<button type="button1"
+onclick="stopClock()">
+Click me to stop display clock</button>
+<p>The current time is <p id="clock1">__:__</p>
+<p id="clock2">__:__</p>
 	
 </p>
 
