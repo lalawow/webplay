@@ -15,12 +15,17 @@
 	<hr>
 	<div id = "commonTimer">
 		<p>Common Timer:</p>
-		<p style = "display: flex"><button>Start</button><span> &nbsp; &nbsp;  </span><button>Stop</button></p>
+		<p style = "display: flex"><button type="button1" onclick="startCommonTimer()">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopCommonTimer()">Stop</button></p>
 		<h2><p id = "commonTimerDisplay">__:__</p></h2>
 	</div>
 	<hr>
 	<div id = "mainTimer">
-		<div class = "mainTimer">Table Topics Timer</div>
+		<div class = "mainTimer" id = "tableTopicsTimer">
+		<p><h2>Table Topics Timer</h2></p>
+		<p style = "display: flex"><button type="button1" onclick="startSpeechTimer(60, 90,120, 150, 'tableTopicsTimerDisplay')">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer()">Stop</button></p>
+		<h2><p id = "tableTopicsTimerDisplay">__:__</p></h2>
+		<p>Table Topics Time Report:</p>
+		</div>
 		<div class = "mainTimer">Prepared Speeches Timer</div>
 	</div>
 </body>
