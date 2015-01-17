@@ -79,13 +79,13 @@ function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime
 		var seconds = commonTimer.getSeconds();
 		document.getElementById(displayID).innerHTML = display5DigitsTime(minutes,seconds);
 		if (secondsCounter > unqualifiedTime) {
-			backgroundColor = "purple";
+			backgroundColor = "darkred";
 		} else if (secondsCounter >= warningTime) {
-			backgroundColor = "red";
+			backgroundColor = "indianred";
 		} else if (secondsCounter >= mediumTime) {
 			backgroundColor = "yellow";
 		} else if (secondsCounter >= qulifiedTime) {
-			backgroundColor ="green";
+			backgroundColor ="yellowgreen";
 		}
 		document.body.style.background = backgroundColor;
 	},1000);
@@ -93,4 +93,8 @@ function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime
 
 function stopSpeechTimer() {
 	clearInterval(beginSpeechTimer);
+}
+
+function clearColor() {
+	document.body.style.background = "";
 }

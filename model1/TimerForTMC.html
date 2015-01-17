@@ -21,12 +21,17 @@
 	<hr>
 	<div id = "mainTimer">
 		<div class = "mainTimer" id = "tableTopicsTimer">
-		<p><h2>Table Topics Timer</h2></p>
-		<p style = "display: flex"><button type="button1" onclick="startSpeechTimer(60, 90,120, 150, 'tableTopicsTimerDisplay')">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer()">Stop</button></p>
-		<h2><p id = "tableTopicsTimerDisplay">__:__</p></h2>
-		<p>Table Topics Time Report:</p>
+			<p><h2>Table Topics Timer</h2></p>
+			<p style = "display: flex"><button type="button1" onclick="startSpeechTimer(60, 90,120, 150, 'tableTopicsTimerDisplay')">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer()">Stop</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="clearColor()">Clear Color</button></p>
+			<h2><p id = "tableTopicsTimerDisplay">__:__</p></h2>
+			<p>Table Topics Time Report:</p>
 		</div>
-		<div class = "mainTimer">Prepared Speeches Timer</div>
+		<div class = "mainTimer" id = "preparedSpeechesTimer">
+			<p><h2>Prepared Speeches Timer</h2></p>
+			<p style = "display: flex"><button type="button1" onclick="startSpeechTimer(300, 360, 420, 450, 'preparedSpeechesTimerDisplay')">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer()">Stop</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="clearColor()">Clear Color</button></p>
+			<h2><p id = "preparedSpeechesTimerDisplay">__:__</p></h2>
+			<p>Prepared Speeches Time Report:</p>
+		</div>
 	</div>
 </body>
 </html> 
