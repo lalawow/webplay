@@ -29,7 +29,13 @@
 		</div>
 		<div class = "mainTimer" id = "preparedSpeechesTimer">
 			<p><h2>Prepared Speeches Timer</h2></p>
-			<p style = "display: flex"><button type="button1" onclick="startSpeechTimer(300, 360, 420, 450, 'preparedSpeechesTimerDisplay')">Start</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer('psReport')">Stop</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="clearColor()">Clear Color</button></p>
+			<form action="">
+				<input type="radio" name="timeSlot" value="7min" checked>7 minutes speech(Defualt)<br>
+				<input type="radio" name="timeSlot" value="Xmin">or X minutes speech(X=
+				<input type="text" id="numberX" size = 1 value=" ">)<br>
+			</form>
+			<p style = "display: flex"><button type="button1" onclick="startPSTimer()">Start</button>
+			<span> &nbsp; &nbsp;  </span><button type="button1" onclick="stopSpeechTimer('psReport')">Stop</button><span> &nbsp; &nbsp;  </span><button type="button1" onclick="clearColor()">Clear Color</button></p>
 			<h2><p id = "preparedSpeechesTimerDisplay">__:__</p></h2>
 			<p>Prepared Speeches Time Report:</p>
 			<p id = "psReport"></p>

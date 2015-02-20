@@ -72,7 +72,7 @@ var speechCount = new Array(0,0);
 function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime, displayID) {
 	speechTimer = new timer();
 	var backgroundColor = "";
-	console.log("timer start");
+
 	var secondsCounter = 0;
 
 	if (displayID==="tableTopicsTimerDisplay") {
@@ -98,7 +98,6 @@ function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime
 		}
 		document.body.style.background = backgroundColor;
 	},1000);
-	console.log("time stop");
 }
 
 function stopSpeechTimer(displayID) {
@@ -119,6 +118,7 @@ function stopSpeechTimer(displayID) {
 
 function clearColor() {
 	document.body.style.background = "";
+	startPSTimer1();
 }
 
 function speakerName(number) {
@@ -132,4 +132,22 @@ function speakerName(number) {
 		default: return (number + "th");
 	}
 
+}
+
+
+function startPSTimer() {
+	console.log("start PS");
+	var timeSlot = $('input[name="timeSlot"]:checked').val();
+	console.log(timeSlot);
+	var minutes = 7;
+	if (timeSlot === "Xmin") {
+		console.log($('input[id="numberX"]').val());
+		var secs = Number($('input[id="numberX"]').val()) * 60;
+		console.log(secs);
+		startSpeechTimer(secs-120, secs-60, secs, secs + 30, 'preparedSpeechesTimerDisplay');
+	} else { 
+		console.log("start7");
+		startSpeechTimer(300, 360, 420, 450, 'preparedSpeechesTimerDisplay');
+	}
+	return;
 }
