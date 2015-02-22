@@ -39,7 +39,7 @@ var beginCommonTimer;
 
 function startCommonTimer() {
 	var commonTimer = new timer();
-	console.log("timer start");
+	//console.log("timer start");
 	beginCommonTimer = setInterval(function() {
 		commonTimer.addSecond();
 		var minutes = commonTimer.getMinutes();
@@ -65,11 +65,13 @@ function display5DigitsTime(minutes, seconds) {
 	return displayResult;
 }
 
-var beginSpeechTimer;
+var beginSpeechTimer = false;
 var speechTimer;
 var speechCount = new Array(0,0);
+var speechType = "TableTopics";
 
 function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime, displayID) {
+	if (beginSpeechTimer !== false) return;
 	speechTimer = new timer();
 	var backgroundColor = "";
 
@@ -77,8 +79,10 @@ function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime
 
 	if (displayID==="tableTopicsTimerDisplay") {
 		speechCount[0]++;
+		speechType = "ttReport";
 	} else {
 		speechCount[1]++;
+		speechType = "psReport";
 	}
 
 	beginSpeechTimer = setInterval(function() {
@@ -101,24 +105,26 @@ function startSpeechTimer(qulifiedTime, mediumTime, warningTime, unqualifiedTime
 }
 
 function stopSpeechTimer(displayID) {
-	clearInterval(beginSpeechTimer);
-	//add time report	
-	var minutes = speechTimer.getMinutes();
-	var seconds = speechTimer.getSeconds();
-    var speechNumber = speechCount[0];
-    if (displayID==="psReport") speechNumber = speechCount[1];
-    var result = speakerName(speechNumber) + " speaker used "+ display5DigitsTime(minutes,seconds) + " ^_^";
-	//add element to the report part
-	var yy = document.getElementById(displayID);
-	var addnode = document.createElement("tr");
-	var node = document.createTextNode(result);
-	addnode.appendChild(node);
-	document.getElementById(displayID).appendChild(addnode);
+	if ((beginSpeechTimer !== false) && (speechType === displayID)) {
+		clearInterval(beginSpeechTimer);
+		beginSpeechTimer = false;
+		//add time report	
+		var minutes = speechTimer.getMinutes();
+		var seconds = speechTimer.getSeconds();
+    	var speechNumber = speechCount[0];
+    	if (displayID==="psReport") speechNumber = speechCount[1];
+    	var result = speakerName(speechNumber) + " speaker used "+ display5DigitsTime(minutes,seconds) + " ^_^";
+		//add element to the report part
+		var yy = document.getElementById(displayID);
+		var addnode = document.createElement("tr");
+		var node = document.createTextNode(result);
+		addnode.appendChild(node);
+		document.getElementById(displayID).appendChild(addnode);
+	}
 }
 
 function clearColor() {
 	document.body.style.background = "";
-	startPSTimer1();
 }
 
 function speakerName(number) {
@@ -136,17 +142,19 @@ function speakerName(number) {
 
 
 function startPSTimer() {
-	console.log("start PS");
+	//console.log("start PS");
 	var timeSlot = $('input[name="timeSlot"]:checked').val();
-	console.log(timeSlot);
+	//console.log(timeSlot);
 	var minutes = 7;
 	if (timeSlot === "Xmin") {
-		console.log($('input[id="numberX"]').val());
+		//console.log($('input[id="numberX"]').val());
 		var secs = Number($('input[id="numberX"]').val()) * 60;
-		console.log(secs);
+		//console.log(secs);
 		startSpeechTimer(secs-120, secs-60, secs, secs + 30, 'preparedSpeechesTimerDisplay');
+	} else if (timeSlot === "6min") {
+		startSpeechTimer(240, 300, 360, 390, 'preparedSpeechesTimerDisplay');
 	} else { 
-		console.log("start7");
+		//console.log("start7");
 		startSpeechTimer(300, 360, 420, 450, 'preparedSpeechesTimerDisplay');
 	}
 	return;
