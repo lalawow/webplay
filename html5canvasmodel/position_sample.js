@@ -23,10 +23,12 @@ $(document).ready(function(){
 	newdiv2.style.position = "absolute";
 	olddiv.appendChild(newdiv2);
     
+    console.log(z);
     $(document).click(function(){
     	console.log("clicked");
     	clickmotion();
     })
+
 })
 
 function clickmotion(){

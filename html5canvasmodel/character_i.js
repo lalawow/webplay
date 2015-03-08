@@ -1,8 +1,10 @@
 var olddiv = document.getElementById('i');
 var font_color = ["red","blue","yellow","green","white"];
 var color_number = 5;
-var character_width = 30;
-var character_height = 40;
+var character_pixel_width = 30;
+var character_pixel_height = 40;
+var character_width = character_pixel_width* 16 + 50px;
+var character_height = character_pixel_height * 16;
 var character_center_x = 500;
 var character_center_y = 200;
 var motion_time = 1000;
@@ -37,8 +39,8 @@ $(document).ready(function(){
 function clickmotion(){
 	console.log("function called");
 	for (i = 0; i < n; i++) {
-		var goal_x = character_center_x+x[i]*character_width;
-		var goal_y = character_center_y+y[i]*character_height;
+		var goal_x = character_center_x+x[i]*character_pixel_width;
+		var goal_y = character_center_y+y[i]*character_pixel_height;
 		var id_number = "#i"+i;
 		$( id_number ).animate({
     		left: goal_x+"px",
