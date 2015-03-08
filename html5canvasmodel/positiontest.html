@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Select a position in the list below to change the div's position.</p>
+
+<div id="myDiv" style="top:500px;left:100px;">I am a div element.</div>
+<div id="myDiv2" >I am a div element.</div>
+<select onchange="myFunction(this);" size="4">
+  <option>absolute
+  <option>fixed
+  <option>static
+  <option>relative
+</select>
+
+<script>
+function myFunction(x) {
+    var whichSelected = x.selectedIndex;
+    var posVal = x.options[whichSelected].text;
+    var elem = document.getElementById("myDiv");
+    console.log(posVal);
+    elem.style.position=posVal;
+    var elem2 = document.getElementById("myDiv2");
+    elem2.style.left="299px";
+    elem2.style.top ="300px";
+    elem2.style.position="absolute";
+}
+</script>
+
+</body>
+</html>
