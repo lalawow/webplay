@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>A handmade gift from Wei!</title>
+<!--        <link rel='stylesheet' type='text/css' href='stylesheet.css'/> -->
+        <script type='text/javascript' src='http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js'></script>
+<!--        <script type='text/javascript' src='arraylist.js'></script>
+        <script type='text/javascript' src='characters_motion.js'></script> -->
+	</head>
+	<body style="background-color:black">
+        <div id="i" style="font-size: 20px"> </div>
+	</body>
+</html>
+
+<script>
+var character_number = 3;
+var n = [56,102,84];
+
+var x = [];
+var y = [];
+x[0]=[4,5,6,7,8,9,10,11,4,5,6,7,8,9,10,11,6,7,8,9,6,7,8,9,6,7,8,9,6,7,8,9,6,7,8,9,6,7,8,9,4,5,6,7,8,9,10,11,4,5,6,7,8,9,10,11];
+y[0]=[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9];
+x[1]=[2,3,4,5,6,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,2,3,4,5,6,7,8,9,10,11,12,13,14,4,5,6,7,8,9,10,11,12,6,7,8,9,10,8]
+y[1]=[1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,8,8,8,8,8,9]
+x[2]=[1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,1,2,3,4,11,12,13,14,2,3,4,5,6,7,8,9,10,11,12,13,4,5,6,7,8,9,10,11];
+y[2]=[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9];
+console.log(n);
+console.log(x);
+console.log(y);
+</script>
+
+<script>
+var olddiv = document.getElementById('i');
+var font_color = ["orangered","blue","yellow","green","cornsilk","aqua","blueviolet","cadetblue","chartreuse","cornflowerblue","purple","pink"];
+var color_number = 12;
+var character_pixel_width = 30;
+var character_pixel_height = 40;
+var character_width = character_pixel_width* 17 + 50;
+var character_height = character_pixel_height * 10;
+var list_start_x = 150;
+var list_start_y = 200;
+var motion_time = 1000;
+
+
+
+    var characters = ["I","H","U"];
+    var HEART =["H","E","A","R","T"];
+	console.log(characters.length);
+    var olddiv = document.getElementById('i');
+    for (var char_n = 0; char_n < characters.length; char_n++){
+    	var current_char = characters[char_n];
+    	for (var i = 0; i < n[char_n]; i++) {
+    		var dot_x = Math.random()*1600;
+			var dot_y = Math.random()*800;
+        
+        	var newid = current_char+i;
+			var newdiv = document.createElement('div');
+			newdiv.setAttribute('id',newid);
+			newdiv.innerHTML = current_char;
+
+			newdiv.style.left = dot_x + "px";
+			newdiv.style.top = dot_y + "px";
+			console.log(newdiv.style.left);
+			newdiv.style.position = "absolute";
+			if (current_char === "H") {
+				newdiv.style.color = "orangered";
+				newdiv.innerHTML = HEART[parseInt(Math.random()*5)];
+			} else {
+				newdiv.style.color = font_color[parseInt(Math.random()*color_number)];
+				newdiv.innerHTML = current_char;
+			}
+			olddiv.appendChild(newdiv);
+    	}        
+    }
+     
+    
+    $(document).click(function(){
+    	console.log("clicked");
+    	clickmotion();
+    })
+
+
+function clickmotion(){
+	var characters = ["I","H","U"];
+	console.log("function called");
+	var character_center_x = list_start_x;
+	var character_center_y = list_start_y;
+	var char_width = [0,12,16];
+	
+	for (var char_n = 0; char_n < characters.length; char_n++){
+		var current_char = characters[char_n];
+		character_center_x += (character_pixel_width* char_width[char_n]+50);
+		for (i = 0; i < n[char_n]; i++) {
+			var goal_x = character_center_x+x[char_n][i]*character_pixel_width;
+			var goal_y = character_center_y+y[char_n][i]*character_pixel_height;
+			var id_number = "#"+current_char+i;
+			$( id_number ).animate({
+    			left: goal_x+"px",
+    			top: goal_y+"px",
+
+  				}, motion_time, function() {
+    			// Animation complete.
+ 		 	});
+		}
+	}
+
+}
+</script>
+
