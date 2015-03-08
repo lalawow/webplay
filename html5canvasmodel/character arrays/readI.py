@@ -2,7 +2,7 @@ character = "i"
 rows = 10
 columns = 16
 filename = "i.txt"
-output_filename = "iarray.txt"
+output_filename = "iarray.js"
 
 my_file = open(filename, "r")
 my_output = open(output_filename, "w")
@@ -17,10 +17,17 @@ for i in range(rows):
 			x.append(j)
 			y.append(i)
 
-my_output.write(str(n)+"\n")
-for i in range(n):
-	my_output.write(str(y[i])+"\n")
-	my_output.write(str(x[i])+"\n")
+my_output.write("n="+str(n)+"\n")
+
+my_output.write("x=["+str(x[0]))
+for i in range(1,n):
+	my_output.write(","+str(x[i]))
+my_output.write("]\n")
+
+my_output.write("y=["+str(y[0]))
+for i in range(1,n):
+	my_output.write(","+str(y[i]))
+my_output.write("]\n")
 
 my_file.close()
 my_output.close()
